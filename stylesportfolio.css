@@ -1,63 +1,165 @@
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
+/* --- Global Reset & Variables --- */
+:root {
+    --bg-dark: #020617;
+    --bg-card: #0f172a;
+    --accent-blue: #38bdf8;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --border: #1e293b;
+    --hover-glow: rgba(56, 189, 248, 0.15);
+}
+
+* {
     box-sizing: border-box;
-    background-color: #f7f7f7;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+    transition: all 0.2s ease-in-out;
 }
 
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* --- Header Section --- */
 header {
-    background-color: #333;
-    color: #fff;
+    padding: 6rem 2rem 4rem;
     text-align: center;
-    padding: 50px 20px;
+    background: radial-gradient(circle at top, #1e293b 0%, #020617 100%);
+    border-bottom: 1px solid var(--border);
 }
 
-.header-content {
-    max-width: 800px;
-    margin: 0 auto;
+h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    margin: 0;
+    background: linear-gradient(to right, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .tagline {
-    font-style: italic;
-    color: #ddd;
+    color: var(--text-secondary);
+    max-width: 650px;
+    margin: 1.5rem auto;
+    font-size: 1.15rem;
 }
 
-section {
-    background-color: #fff;
-    padding: 5%;
-    margin: 20px 0;
+.contact-links {
+    margin-top: 2rem;
+}
+
+.contact-links a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--border);
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    margin: 0 10px;
+}
+
+.contact-links a:hover {
+    background: var(--hover-glow);
+    border-color: var(--accent-blue);
+}
+
+/* --- Layout Sections --- */
+section {
+    max-width: 1000px;
+    margin: 4rem auto;
+    padding: 0 2rem;
 }
 
 h2 {
-    color: red;
-    font-size: 2em;
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
 }
 
-.project, #contact, footer {
-    width: 90%; /* Set width to 90% to leave 5% gaps on both sides */
-    margin: 0 auto; /* Center the content */
+h2::after {
+    content: "";
+    height: 1px;
+    background: var(--border);
+    flex-grow: 1;
+    margin-left: 20px;
 }
 
-.project {
-    margin-bottom: 20px;
+/* --- Grid & Cards --- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
 }
 
-a {
-    color: #4285f4;
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
 }
 
+.card:hover {
+    border-color: var(--accent-blue);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.card h3 {
+    margin-top: 0;
+    color: var(--accent-blue);
+    font-size: 1.4rem;
+}
+
+/* --- Skill Tags --- */
+.skill-tags {
+    margin-top: 1.5rem;
+}
+
+.skill-tag {
+    display: inline-block;
+    background: #1e293b;
+    color: var(--accent-blue);
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 6px 8px 0;
+}
+
+/* --- Toolkit Section --- */
+#quick-links .skill-tag {
+    font-size: 0.9rem;
+    padding: 0.5rem 1.25rem;
+    background: transparent;
+    border: 1px solid var(--border);
+}
+
+#quick-links .skill-tag:hover {
+    border-color: var(--accent-blue);
+    color: var(--text-primary);
+}
+
+/* --- Footer --- */
 footer {
-    background-color: #333;
-    color: #fff;
     text-align: center;
-    padding: 10px 0;
+    padding: 4rem 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+}
+
+/* --- Mobile Responsive --- */
+@media (max-width: 768px) {
+    h1 { font-size: 2.2rem; }
+    .contact-links a { display: block; margin: 10px auto; width: fit-content; }
 }
